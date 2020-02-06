@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/bloodApp?serverTimezone=UTC&characterEncoding=UTF-8&PublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/proddatabase?serverTimezone=UTC&characterEncoding=UTF-8&PublicKeyRetrieval=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
