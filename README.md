@@ -9,5 +9,5 @@
 
 Rabaty liczone są w zależności od typu produktu.
 W najbliższym czasie rabaty naliczane będą następująco:
-MALE, FEMALE - 5%
-KID - 10%
+* MALE, FEMALE - 5%
+* KID - 10%
