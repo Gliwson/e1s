@@ -12,7 +12,7 @@
 
     <changeSet id="20190624005436-1-data" author="Gliwson">
         <loadData
-                file="db/changelog/data/user_authority.csv"
+                file="db/changelog/data/numberViewsProduct.csv"
                 separator=";"
                 tableName="person">
             <column name="address" type="string"/>
