@@ -1,6 +1,5 @@
 package io.github.e1s.e1s.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.e1s.e1s.domain.enums.TypeMaleFemaleKid;
 
 import javax.persistence.*;
@@ -37,11 +36,7 @@ public class Product {
     private Long views;
 
     @ManyToOne
-    @JsonIgnoreProperties("discounts")
     private Discount discount;
-
-    public Product() {
-    }
 
     public Discount getDiscount() {
         return discount;

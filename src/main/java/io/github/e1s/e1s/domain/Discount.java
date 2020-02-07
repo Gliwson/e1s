@@ -33,9 +33,6 @@ public class Discount {
     @OneToMany(mappedBy = "discount")
     private Set<Product> products = new HashSet<>();
 
-    public Discount() {
-    }
-
     public Set<Product> getProducts() {
         return products;
     }
