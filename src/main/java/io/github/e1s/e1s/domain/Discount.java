@@ -1,5 +1,6 @@
 package io.github.e1s.e1s.domain;
 
+import io.github.e1s.e1s.domain.enums.TypeMaleFemaleKid;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -16,30 +17,18 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "male", nullable = false)
-    private Long male;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false)
+    private TypeMaleFemaleKid type;
 
     @NotNull
-    @Column(name = "female", nullable = false)
-    private Long female;
-
-    @NotNull
-    @Column(name = "kid", nullable = false)
-    private Long kid;
+    @Column(name = "percent", nullable = false)
+    private Long percent;
 
     //Problem n + 1 queries in Hibernate
     @LazyCollection(value = LazyCollectionOption.EXTRA)
     @OneToMany(mappedBy = "discount")
     private Set<Product> products = new HashSet<>();
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
 
     public Long getId() {
         return id;
@@ -49,37 +38,27 @@ public class Discount {
         this.id = id;
     }
 
-    public Long getMale() {
-        return male;
+    public TypeMaleFemaleKid getType() {
+        return type;
     }
 
-    public void setMale(Long male) {
-        this.male = male;
+    public void setType(TypeMaleFemaleKid type) {
+        this.type = type;
     }
 
-    public Long getFemale() {
-        return female;
+    public Long getPercent() {
+        return percent;
     }
 
-    public void setFemale(Long female) {
-        this.female = female;
+    public void setPercent(Long percent) {
+        this.percent = percent;
     }
 
-    public Long getKid() {
-        return kid;
+    public Set<Product> getProducts() {
+        return products;
     }
 
-    public void setKid(Long kid) {
-        this.kid = kid;
-    }
-
-    @Override
-    public String toString() {
-        return "Discount{" +
-                "id=" + id +
-                ", male=" + male +
-                ", female=" + female +
-                ", kid=" + kid +
-                '}';
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 }

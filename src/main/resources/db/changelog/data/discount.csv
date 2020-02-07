@@ -1,4 +1,6 @@
-id;male;female;kid
-1;0;5;10
+id;type  ;percent
+1 ;MALE  ;5
+2 ;FEMALE;5
+3 ;KID   ;10
 
 

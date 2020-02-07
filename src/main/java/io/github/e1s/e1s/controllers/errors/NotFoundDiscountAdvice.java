@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class ProductNotFoundAdvice {
+public class NotFoundDiscountAdvice {
 
     @ResponseBody
-    @ExceptionHandler(ProductNotFoundException.class)
+    @ExceptionHandler(NotFoundDiscountException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String productNotFoundAdvice(ProductNotFoundException ex) {
+    public String notFoundDiscountAdvice(NotFoundDiscountException ex) {
         return ex.getMessage();
     }
-
 }
