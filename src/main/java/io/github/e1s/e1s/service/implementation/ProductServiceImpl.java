@@ -1,6 +1,7 @@
 package io.github.e1s.e1s.service.implementation;
 
 import io.github.e1s.e1s.controllers.dtos.ProductDTO;
+import io.github.e1s.e1s.controllers.errors.ProductNotFoundException;
 import io.github.e1s.e1s.domain.Product;
 import io.github.e1s.e1s.repository.ProductRepository;
 import io.github.e1s.e1s.service.ProductService;
@@ -29,6 +30,18 @@ public class ProductServiceImpl implements ProductService {
         return products.stream()
                 .map(ProductMapper::productToProductDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public ProductDTO findProductById(Long id) {
+        if (id == null) {
+            return null;
+        }
+        return productRepository.findById(id).map(product -> {
+            productRepository.findByIdAndIncreaseViewsByOne(product.getId());
+            return ProductMapper.productToProductDto(product);
+        }).orElseThrow(() -> new ProductNotFoundException(id));
     }
 
 }
