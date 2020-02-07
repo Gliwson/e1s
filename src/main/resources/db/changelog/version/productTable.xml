@@ -4,23 +4,7 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet author="Gliwson" id="1581034786226-1">
-        <createTable tableName="discount">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="female" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="kid" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="male" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="Gliwson" id="1581034786226-2">
+    <changeSet author="Gliwson" id="1581041287256-2">
         <createTable tableName="product">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -36,19 +20,24 @@
                 <constraints nullable="false"/>
             </column>
             <column name="views" type="BIGINT"/>
+            <column name="discount_id" type="BIGINT"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="20190624005436-1-data" author="Gliwson">
+    <changeSet id="20190624005436-2-data" author="Gliwson">
         <loadData
-                file="db/changelog/data/discount.csv"
+                file="db/changelog/data/products.csv"
                 separator=";"
-                tableName="discount">
+                tableName="product">
             <column name="id" type="numeric"/>
-            <column name="male" type="numeric"/>
-            <column name="female" type="numeric"/>
-            <column name="kid" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="description" type="string"/>
+            <column name="price" type="numeric"/>
+            <column name="type_male_female_kid" type="string"/>
+            <column name="views" type="numeric"/>
+            <column name="discount_id" type="numeric"/>
         </loadData>
     </changeSet>
+
 
 </databaseChangeLog>

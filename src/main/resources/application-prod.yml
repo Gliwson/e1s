@@ -6,6 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
+    generate-ddl: true
   liquibase:
     change-log: classpath:db/changelog/dbchangelog-prod.xml
     enabled: off

@@ -1,0 +1,7 @@
+id;name           ;description                    ;price;type_male_female_kid;views;discount_id
+1 ;Book about Life;This is the book about of life.;100  ;MALE                ;10   ;1
+2 ;Cup            ;This is the book about of life.;200  ;MALE                ;20   ;1
+3 ;Toy            ;This is the book about of life.;300  ;MALE                ;30   ;1
+4 ;Toy of car     ;This is the book about of life.;400  ;MALE                ;40   ;1
+5 ;Book           ;This is the book about of life.;500  ;KID                 ;50   ;1
+6 ;Tights         ;This is the book about of life.;600  ;FEMALE              ;78   ;1

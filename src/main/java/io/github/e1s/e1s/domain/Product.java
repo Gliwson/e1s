@@ -1,5 +1,6 @@
 package io.github.e1s.e1s.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.github.e1s.e1s.domain.enums.TypeMaleFemaleKid;
 
 import javax.persistence.*;
@@ -32,6 +33,81 @@ public class Product {
     @Column(name = "price", precision = 21, scale = 2, nullable = false)
     private BigDecimal price;
 
-    @Column("views")
+    @Column(name = "views")
     private Long views;
+
+    @ManyToOne
+    @JsonIgnoreProperties("discounts")
+    private Discount discount;
+
+    public Product() {
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TypeMaleFemaleKid getTypeMaleFemaleKid() {
+        return typeMaleFemaleKid;
+    }
+
+    public void setTypeMaleFemaleKid(TypeMaleFemaleKid typeMaleFemaleKid) {
+        this.typeMaleFemaleKid = typeMaleFemaleKid;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Long getViews() {
+        return views;
+    }
+
+    public void setViews(Long views) {
+        this.views = views;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", typeMaleFemaleKid=" + typeMaleFemaleKid +
+                ", price=" + price +
+                ", views=" + views +
+                '}';
+    }
 }
