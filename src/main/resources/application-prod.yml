@@ -9,7 +9,6 @@ spring:
     generate-ddl: true
   liquibase:
     change-log: classpath:db/changelog/dbchangelog-prod.xml
-    enabled: off
 
 server:
   port: 8080

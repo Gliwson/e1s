@@ -11,7 +11,11 @@
     <property name="clobType" value="clob" dbms="mysql, oracle, mssql, mariadb, postgresql"/>
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
-    <include file="version/prodTable.xml" relativeToChangelogFile="true"/>
+    <!--    <include file="version/prodTable.xml" relativeToChangelogFile="true"/>-->
+    <!--    <include file="version/oneToMany.xml" relativeToChangelogFile="true"/>-->
+
+    <include file="version/discountTable.xml" relativeToChangelogFile="true"/>
+    <include file="version/productTable.xml" relativeToChangelogFile="true"/>
     <include file="version/oneToMany.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
 
