@@ -1,0 +1,10 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="version/discountTable.xml" relativeToChangelogFile="true"/>
+    <include file="version/productTable.xml" relativeToChangelogFile="true"/>
+    <include file="version/oneToMany.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>
+

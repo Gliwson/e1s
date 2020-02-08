@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="Gliwson" id="1581041287256-2">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(1000)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL(21, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_male_female_kid" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="views" type="BIGINT"/>
+            <column name="discount_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20190624005436-2-data" author="Gliwson">
+        <loadData
+                file="db/changelog/data/products.csv"
+                separator=";"
+                tableName="product">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="description" type="string"/>
+            <column name="price" type="numeric"/>
+            <column name="type_male_female_kid" type="string"/>
+            <column name="views" type="numeric"/>
+            <column name="discount_id" type="numeric"/>
+        </loadData>
+    </changeSet>
+
+
+</databaseChangeLog>
