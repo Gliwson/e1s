@@ -7,6 +7,7 @@ import io.github.e1s.e1s.repository.DiscountRepository;
 import io.github.e1s.e1s.service.DiscountService;
 import io.github.e1s.e1s.service.calculators.DiscountCalculate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DiscountServiceImpl implements DiscountService {
@@ -18,6 +19,7 @@ public class DiscountServiceImpl implements DiscountService {
     }
 
     @Override
+    @Transactional
     public ProductDTO addDiscount(ProductDTO productDTO) {
         Long percent = discountRepository.findByType(productDTO.getTypeMaleFemaleKid())
                 .map(Discount::getPercent)
