@@ -10,7 +10,6 @@ import java.util.Optional;
 @Repository
 public interface DiscountRepository extends JpaRepository<Discount, Long> {
 
-    //    @Query("SELECT Discount from Discount discount where discount.type =:type")
     Optional<Discount> findByType(TypeMaleFemaleKid typeMaleFemaleKid);
 
 }

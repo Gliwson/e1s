@@ -11,6 +11,5 @@
                                  constraintName="fk_product_discount_id"
                                  referencedColumnNames="id"
                                  referencedTableName="discount"/>
-
     </changeSet>
 </databaseChangeLog>

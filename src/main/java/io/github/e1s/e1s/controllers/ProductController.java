@@ -37,5 +37,4 @@ public class ProductController {
         return discountService.addDiscount(productDTO);
 
     }
-
 }
