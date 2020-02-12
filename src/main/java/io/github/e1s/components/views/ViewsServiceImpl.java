@@ -1,6 +1,7 @@
 package io.github.e1s.components.views;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ViewsServiceImpl implements ViewsService {
@@ -12,6 +13,7 @@ public class ViewsServiceImpl implements ViewsService {
     }
 
     @Override
+    @Transactional
     public void increaseViews(Long id) {
         if (id == null) {
             return;

@@ -33,9 +33,9 @@ public class Product {
     @Column(name = "price", precision = 21, scale = 2, nullable = false)
     private BigDecimal price;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "views_id", referencedColumnName = "id")
-    private Views views;
+//    @JoinColumn(name = "views_id", referencedColumnName = "id")
+@OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
+private Views views;
 
     @ManyToOne
     private Discount discount;

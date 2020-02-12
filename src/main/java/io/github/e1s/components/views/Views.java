@@ -9,13 +9,15 @@ import javax.persistence.*;
 public class Views {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "counter")
     private Long counter;
 
-    @OneToOne(mappedBy = "views")
+    //    @OneToOne(mappedBy = "views")
+    @OneToOne
+    @MapsId
     private Product product;
 
     public Long getId() {

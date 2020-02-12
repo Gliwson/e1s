@@ -4,12 +4,12 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet author="Gliwson" id="1581539594385-1">
+    <changeSet author="Gliwson" id="1581543361396-3">
         <createTable tableName="views">
-            <column autoIncrement="true" name="id" type="BIGINT">
+            <column name="counter" type="BIGINT"/>
+            <column name="product_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="counter" type="BIGINT"/>
         </createTable>
     </changeSet>
 
@@ -18,9 +18,8 @@
                 file="db/changelog/data/views.csv"
                 separator=";"
                 tableName="views">
-            <column name="id" type="numeric"/>
             <column name="counter" type="numeric"/>
-
+            <column name="product_id" type="numeric"/>
         </loadData>
     </changeSet>
 
