@@ -16,10 +16,10 @@
             <column name="price" type="DECIMAL(21, 2)">
                 <constraints nullable="false"/>
             </column>
-            <column name="type_male_female_kid" type="VARCHAR(255)">
+            <column name="product_type" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="views" type="BIGINT"/>
+            <column name="views_id" type="BIGINT"/>
             <column name="discount_id" type="BIGINT"/>
         </createTable>
     </changeSet>
@@ -33,8 +33,8 @@
             <column name="name" type="string"/>
             <column name="description" type="string"/>
             <column name="price" type="numeric"/>
-            <column name="type_male_female_kid" type="string"/>
-            <column name="views" type="numeric"/>
+            <column name="product_type" type="string"/>
+            <column name="views_id" type="numeric"/>
             <column name="discount_id" type="numeric"/>
         </loadData>
     </changeSet>

@@ -8,8 +8,7 @@ public class ProductDTO {
     private String description;
     private String name;
     private BigDecimal price;
-    private TypeMaleFemaleKid typeMaleFemaleKid;
-    private Long views;
+    private ProductType productType;
 
     public ProductDTO() {
     }
@@ -46,19 +45,12 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public TypeMaleFemaleKid getTypeMaleFemaleKid() {
-        return typeMaleFemaleKid;
+    public ProductType getProductType() {
+        return productType;
     }
 
-    public void setTypeMaleFemaleKid(TypeMaleFemaleKid typeMaleFemaleKid) {
-        this.typeMaleFemaleKid = typeMaleFemaleKid;
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
     }
 
-    public Long getViews() {
-        return views;
-    }
-
-    public void setViews(Long views) {
-        this.views = views;
-    }
 }

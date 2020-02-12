@@ -1,7 +1,7 @@
 package io.github.e1s.components.discount;
 
 import io.github.e1s.components.product.Product;
-import io.github.e1s.components.product.TypeMaleFemaleKid;
+import io.github.e1s.components.product.ProductType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -20,7 +20,7 @@ public class Discount {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
-    private TypeMaleFemaleKid type;
+    private ProductType type;
 
     @NotNull
     @Column(name = "percent", nullable = false)
@@ -39,11 +39,11 @@ public class Discount {
         this.id = id;
     }
 
-    public TypeMaleFemaleKid getType() {
+    public ProductType getType() {
         return type;
     }
 
-    public void setType(TypeMaleFemaleKid type) {
+    public void setType(ProductType type) {
         this.type = type;
     }
 

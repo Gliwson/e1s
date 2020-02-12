@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="Gliwson" id="1581539594385-1">
+        <createTable tableName="views">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="counter" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20190624005436-2-data" author="Gliwson">
+        <loadData
+                file="db/changelog/data/views.csv"
+                separator=";"
+                tableName="views">
+            <column name="id" type="numeric"/>
+            <column name="counter" type="numeric"/>
+
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

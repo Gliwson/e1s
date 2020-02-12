@@ -5,7 +5,7 @@ import io.github.e1s.components.discount.DiscountRepository;
 import io.github.e1s.components.discount.DiscountServiceImpl;
 import io.github.e1s.components.discount.NotFoundDiscountException;
 import io.github.e1s.components.product.ProductDTO;
-import io.github.e1s.components.product.TypeMaleFemaleKid;
+import io.github.e1s.components.product.ProductType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,25 +42,24 @@ class DiscountServiceImplTest {
         discountZeroPercent = new Discount();
         discountZeroPercent.setId(1L);
         discountZeroPercent.setPercent(0L);
-        discountZeroPercent.setType(TypeMaleFemaleKid.MALE);
+        discountZeroPercent.setType(ProductType.MALE);
 
         discountFivePercent = new Discount();
         discountFivePercent.setId(1L);
         discountFivePercent.setPercent(5L);
-        discountFivePercent.setType(TypeMaleFemaleKid.MALE);
+        discountFivePercent.setType(ProductType.MALE);
 
         discountMinusFivePercent = new Discount();
         discountMinusFivePercent.setId(1L);
         discountMinusFivePercent.setPercent(-5L);
-        discountMinusFivePercent.setType(TypeMaleFemaleKid.MALE);
+        discountMinusFivePercent.setType(ProductType.MALE);
 
         productDTO = new ProductDTO();
         productDTO.setId(1L);
         productDTO.setName("Pants");
         productDTO.setDescription("Used to wear");
         productDTO.setPrice(new BigDecimal("100"));
-        productDTO.setTypeMaleFemaleKid(TypeMaleFemaleKid.MALE);
-        productDTO.setViews(10L);
+        productDTO.setProductType(ProductType.MALE);
     }
 
     @Test

@@ -1,6 +1,6 @@
 package io.github.e1s.components.product;
 
-public class ProductMapper {
+class ProductMapper {
 
     static ProductDTO productToProductDto(Product product) {
         ProductDTO productDTO = new ProductDTO();
@@ -11,8 +11,7 @@ public class ProductMapper {
             productDTO.setName(product.getName());
             productDTO.setDescription(product.getDescription());
             productDTO.setPrice(product.getPrice());
-            productDTO.setTypeMaleFemaleKid(product.getTypeMaleFemaleKid());
-            productDTO.setViews(product.getViews());
+            productDTO.setProductType(product.getProductType());
         }
         return productDTO;
     }

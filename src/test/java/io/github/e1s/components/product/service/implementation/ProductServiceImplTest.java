@@ -1,6 +1,7 @@
 package io.github.e1s.components.product.service.implementation;
 
 import io.github.e1s.components.product.*;
+import io.github.e1s.components.views.ViewsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,10 +30,17 @@ class ProductServiceImplTest {
     @InjectMocks
     private ProductServiceImpl productService;
 
+
+    private ViewsService viewsService;
+
     @Mock
     private ProductRepository productRepository;
 
     private Product product;
+
+    ProductServiceImplTest(ViewsService viewsService) {
+        this.viewsService = viewsService;
+    }
 
     @BeforeEach
     public void init() {
@@ -41,8 +49,8 @@ class ProductServiceImplTest {
         product.setName("Pants");
         product.setDescription("Used to wear");
         product.setPrice(new BigDecimal("100"));
-        product.setTypeMaleFemaleKid(TypeMaleFemaleKid.MALE);
-        product.setViews(10L);
+        product.setProductType(ProductType.MALE);
+//        product.setViews(10L);
         product.setDiscount(null);
     }
 
@@ -54,11 +62,11 @@ class ProductServiceImplTest {
         List<ProductDTO> result = productService.findAllProducts();
         //then
         then(productRepository).should().findAll();
-        then(productRepository).should().findByIdAndIncreaseViewsByOne(any());
+        then(viewsService).should().increaseViews(any());
         assertThat(result, hasSize(1));
         assertThat(result.get(0).getName(), equalTo("Pants"));
         assertThat(result.get(0).getPrice(), is(new BigDecimal(100)));
-        assertThat(result.get(0).getViews(), equalTo(10L));
+//        assertThat(result.get(0).getViews(), equalTo(10L));
     }
 
     @Test
@@ -69,10 +77,10 @@ class ProductServiceImplTest {
         ProductDTO result = productService.findProductById(1L);
         //then
         then(productRepository).should().findById(1L);
-        then(productRepository).should().findByIdAndIncreaseViewsByOne(any());
+        then(viewsService).should().increaseViews(any());
         assertThat(result.getName(), equalTo("Pants"));
         assertThat(result.getPrice(), is(new BigDecimal(100)));
-        assertThat(result.getViews(), equalTo(10L));
+//        assertThat(result.getViews(), equalTo(10L));
     }
 
     @Test
@@ -82,7 +90,7 @@ class ProductServiceImplTest {
         //then
         assertThrows(ProductNotFoundException.class, () -> productService.findProductById(2L));
         then(productRepository).should().findById(2L);
-        then(productRepository).should(never()).findByIdAndIncreaseViewsByOne(anyLong());
+        then(viewsService).should(never()).increaseViews(anyLong());
     }
 
     @Test
@@ -92,7 +100,7 @@ class ProductServiceImplTest {
         ProductDTO result = productService.findProductById(null);
         //then
         then(productRepository).should(never()).findById(any());
-        then(productRepository).should(never()).findByIdAndIncreaseViewsByOne(any());
+        then(viewsService).should(never()).increaseViews(any());
         assertNull(result);
 
     }

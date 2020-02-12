@@ -1,6 +1,7 @@
 package io.github.e1s.components.product;
 
 import io.github.e1s.components.discount.Discount;
+import io.github.e1s.components.views.Views;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
@@ -24,27 +25,20 @@ public class Product {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "type_male_female_kid", nullable = false)
-    private TypeMaleFemaleKid typeMaleFemaleKid;
+    @Column(name = "product_type", nullable = false)
+    private ProductType productType;
 
     @NotNull
     @DecimalMin(value = "0")
     @Column(name = "price", precision = 21, scale = 2, nullable = false)
     private BigDecimal price;
 
-    @Column(name = "views")
-    private Long views;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "views_id", referencedColumnName = "id")
+    private Views views;
 
     @ManyToOne
     private Discount discount;
-
-    public Discount getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
-    }
 
     public Long getId() {
         return id;
@@ -70,12 +64,12 @@ public class Product {
         this.description = description;
     }
 
-    public TypeMaleFemaleKid getTypeMaleFemaleKid() {
-        return typeMaleFemaleKid;
+    public ProductType getProductType() {
+        return productType;
     }
 
-    public void setTypeMaleFemaleKid(TypeMaleFemaleKid typeMaleFemaleKid) {
-        this.typeMaleFemaleKid = typeMaleFemaleKid;
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
     }
 
     public BigDecimal getPrice() {
@@ -86,12 +80,20 @@ public class Product {
         this.price = price;
     }
 
-    public Long getViews() {
+    public Views getViews() {
         return views;
     }
 
-    public void setViews(Long views) {
+    public void setViews(Views views) {
         this.views = views;
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
     }
 
     @Override
@@ -100,9 +102,10 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", typeMaleFemaleKid=" + typeMaleFemaleKid +
+                ", productType=" + productType +
                 ", price=" + price +
                 ", views=" + views +
+                ", discount=" + discount +
                 '}';
     }
 }

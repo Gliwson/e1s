@@ -1,5 +1,6 @@
 package io.github.e1s.components.product;
 
+import io.github.e1s.components.views.ViewsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,16 +11,18 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
+    private ViewsService viewsService;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ViewsService viewsService) {
         this.productRepository = productRepository;
+        this.viewsService = viewsService;
     }
 
     @Override
     @Transactional
     public List<ProductDTO> findAllProducts() {
         List<Product> products = productRepository.findAll();
-        products.forEach(product -> productRepository.findByIdAndIncreaseViewsByOne(product.getId()));
+        products.forEach(product -> viewsService.increaseViews(product.getViews().getId()));
 
         return products.stream()
                 .map(ProductMapper::productToProductDto)
@@ -33,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }
         return productRepository.findById(id).map(product -> {
-            productRepository.findByIdAndIncreaseViewsByOne(product.getId());
+            viewsService.increaseViews(product.getViews().getId());
             return ProductMapper.productToProductDto(product);
         }).orElseThrow(() -> new ProductNotFoundException(id));
     }
