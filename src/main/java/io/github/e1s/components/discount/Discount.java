@@ -1,7 +1,7 @@
 package io.github.e1s.components.discount;
 
-import io.github.e1s.components.product.domain.Product;
-import io.github.e1s.components.product.domain.enums.TypeMaleFemaleKid;
+import io.github.e1s.components.product.Product;
+import io.github.e1s.components.product.TypeMaleFemaleKid;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 

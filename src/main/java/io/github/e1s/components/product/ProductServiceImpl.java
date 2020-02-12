@@ -1,11 +1,5 @@
-package io.github.e1s.components.product.service.implementation;
+package io.github.e1s.components.product;
 
-import io.github.e1s.components.product.controllers.dtos.ProductDTO;
-import io.github.e1s.components.product.controllers.errors.ProductNotFoundException;
-import io.github.e1s.components.product.domain.Product;
-import io.github.e1s.components.product.repository.ProductRepository;
-import io.github.e1s.components.product.service.ProductService;
-import io.github.e1s.components.product.service.mapper.ProductMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,6 +1,4 @@
-package io.github.e1s.components.product.controllers.dtos;
-
-import io.github.e1s.components.product.domain.enums.TypeMaleFemaleKid;
+package io.github.e1s.components.product;
 
 import java.math.BigDecimal;
 

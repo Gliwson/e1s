@@ -1,7 +1,7 @@
-package io.github.e1s.components.discount.calculators;
+package io.github.e1s.components.discount;
 
 
-import io.github.e1s.components.product.controllers.dtos.ProductDTO;
+import io.github.e1s.components.product.ProductDTO;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

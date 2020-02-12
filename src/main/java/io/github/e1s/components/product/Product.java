@@ -1,7 +1,6 @@
-package io.github.e1s.components.product.domain;
+package io.github.e1s.components.product;
 
 import io.github.e1s.components.discount.Discount;
-import io.github.e1s.components.product.domain.enums.TypeMaleFemaleKid;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;

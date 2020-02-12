@@ -1,11 +1,8 @@
-package io.github.e1s.components.product.service.mapper;
-
-import io.github.e1s.components.product.controllers.dtos.ProductDTO;
-import io.github.e1s.components.product.domain.Product;
+package io.github.e1s.components.product;
 
 public class ProductMapper {
 
-    public static ProductDTO productToProductDto(Product product) {
+    static ProductDTO productToProductDto(Product product) {
         ProductDTO productDTO = new ProductDTO();
         if (product == null) {
             return null;

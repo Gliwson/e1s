@@ -1,6 +1,5 @@
-package io.github.e1s.components.product.repository;
+package io.github.e1s.components.product;
 
-import io.github.e1s.components.product.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

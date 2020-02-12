@@ -1,8 +1,6 @@
-package io.github.e1s.components.product.controllers;
+package io.github.e1s.components.product;
 
 import io.github.e1s.components.discount.DiscountService;
-import io.github.e1s.components.product.controllers.dtos.ProductDTO;
-import io.github.e1s.components.product.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

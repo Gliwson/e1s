@@ -1,7 +1,6 @@
 package io.github.e1s.components.discount;
 
-import io.github.e1s.components.discount.calculators.DiscountCalculate;
-import io.github.e1s.components.product.controllers.dtos.ProductDTO;
+import io.github.e1s.components.product.ProductDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

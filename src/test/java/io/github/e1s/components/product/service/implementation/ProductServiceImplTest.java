@@ -1,10 +1,6 @@
 package io.github.e1s.components.product.service.implementation;
 
-import io.github.e1s.components.product.controllers.dtos.ProductDTO;
-import io.github.e1s.components.product.controllers.errors.ProductNotFoundException;
-import io.github.e1s.components.product.domain.Product;
-import io.github.e1s.components.product.domain.enums.TypeMaleFemaleKid;
-import io.github.e1s.components.product.repository.ProductRepository;
+import io.github.e1s.components.product.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

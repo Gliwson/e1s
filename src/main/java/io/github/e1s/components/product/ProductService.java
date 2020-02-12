@@ -1,7 +1,5 @@
-package io.github.e1s.components.product.service;
+package io.github.e1s.components.product;
 
-
-import io.github.e1s.components.product.controllers.dtos.ProductDTO;
 
 import java.util.List;
 
