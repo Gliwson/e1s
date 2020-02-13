@@ -1,9 +1,5 @@
-package io.github.e1s.components.product.service.implementation;
+package io.github.e1s.components.discount;
 
-import io.github.e1s.components.discount.Discount;
-import io.github.e1s.components.discount.DiscountRepository;
-import io.github.e1s.components.discount.DiscountServiceImpl;
-import io.github.e1s.components.discount.NotFoundDiscountException;
 import io.github.e1s.components.product.ProductDTO;
 import io.github.e1s.components.product.ProductType;
 import org.junit.jupiter.api.BeforeEach;

@@ -30,10 +30,12 @@ public class ProductController {
     public List<ProductDTO> findAll(@RequestParam(name = "product", required = false) Long id, Pageable pageable) {
         if (id != null) {
             List<ProductDTO> list = new ArrayList<>();
+
             ProductDTO productDTO = productService.findProductById(id);
-            viewsService.increaseViews(productDTO.getId());
             ProductDTO productDTO1 = discountService.addDiscount(productDTO);
             list.add(productDTO1);
+
+            viewsService.increaseViews(productDTO.getId());
             return list;
         } else {
             List<ProductDTO> allProducts = productService.findAllProducts(pageable);

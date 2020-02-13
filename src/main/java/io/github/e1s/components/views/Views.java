@@ -15,7 +15,6 @@ public class Views {
     @Column(name = "counter")
     private Long counter;
 
-    //    @OneToOne(mappedBy = "views")
     @OneToOne
     @MapsId
     private Product product;
