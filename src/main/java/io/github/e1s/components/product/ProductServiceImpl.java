@@ -1,5 +1,7 @@
 package io.github.e1s.components.product;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +19,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public List<ProductDTO> findAllProducts() {
-        List<Product> products = productRepository.findAll();
+    public List<ProductDTO> findAllProducts(Pageable pageable) {
+        Page<Product> products = productRepository.findAll(pageable);
         return products.stream()
                 .map(ProductMapper::productToProductDto)
                 .collect(Collectors.toList());
