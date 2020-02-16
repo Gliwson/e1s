@@ -1,4 +1,4 @@
-package io.github.e1s.components.product;
+package io.github.e1s.components.product.errors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,13 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class ProductNotFoundAdvice {
-
+public class IdIsNullAdvice {
     @ResponseBody
-    @ExceptionHandler(ProductNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String productNotFoundAdvice(ProductNotFoundException ex) {
+    @ExceptionHandler(IdIsNullException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String idIsNullAdvice(IdIsNullException ex) {
         return ex.getMessage();
     }
-
 }

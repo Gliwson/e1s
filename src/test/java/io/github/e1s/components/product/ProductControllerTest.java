@@ -21,20 +21,23 @@ class ProductControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnProducts() throws Exception {
-        this.mockMvc.perform(get("/products")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"));
-    }
-
-    @Test
     public void shouldReturnOneProduct() throws Exception {
-        this.mockMvc.perform(get("/products")).andDo(print()).andExpect(status().isOk())
+        this.mockMvc.perform(get("/products").param("product", "1")).andDo(print())
+                .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"));
     }
 
     @Test
     public void shouldReturnNotFound() throws Exception {
-        this.mockMvc.perform(get("/products").param("product", "10")).andDo(print()).andExpect(status().isNotFound())
+        this.mockMvc.perform(get("/products").param("product", "10")).andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentType("text/plain;charset=UTF-8"));
+    }
+
+    @Test
+    public void shouldReturnIdIsNull() throws Exception {
+        this.mockMvc.perform(get("/products").param("product", "")).andDo(print())
+                .andExpect(status().isBadRequest())
                 .andExpect(content().contentType("text/plain;charset=UTF-8"));
     }
 }
