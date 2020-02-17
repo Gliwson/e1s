@@ -9,8 +9,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @Disabled
 @SpringBootTest
@@ -24,6 +23,23 @@ class ProductControllerTest {
     public void shouldReturnOneProduct() throws Exception {
         this.mockMvc.perform(get("/products").param("product", "1")).andDo(print())
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$.price").value("100.0"))
+                .andExpect(content().contentType("application/json"));
+    }
+
+    @Test
+    public void shouldReturnProductWithDiscountThreePercent() throws Exception {
+        this.mockMvc.perform(get("/products").param("product", "4")).andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.price").value("970.0"))
+                .andExpect(content().contentType("application/json"));
+    }
+
+    @Test
+    public void shouldReturnProductWithDiscountFivePercent() throws Exception {
+        this.mockMvc.perform(get("/products").param("product", "6")).andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.price").value("1995.0"))
                 .andExpect(content().contentType("application/json"));
     }
 
