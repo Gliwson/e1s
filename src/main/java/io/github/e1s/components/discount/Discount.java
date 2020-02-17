@@ -1,7 +1,6 @@
 package io.github.e1s.components.discount;
 
 import io.github.e1s.components.product.Product;
-import io.github.e1s.components.product.ProductType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -11,16 +10,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "discount")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DIS")
 public class Discount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false)
-    private ProductType type;
 
     @NotNull
     @Column(name = "percent", nullable = false)
@@ -39,14 +35,6 @@ public class Discount {
         this.id = id;
     }
 
-    public ProductType getType() {
-        return type;
-    }
-
-    public void setType(ProductType type) {
-        this.type = type;
-    }
-
     public Long getPercent() {
         return percent;
     }
@@ -62,4 +50,5 @@ public class Discount {
     public void setProducts(Set<Product> products) {
         this.products = products;
     }
+
 }

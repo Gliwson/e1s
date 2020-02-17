@@ -1,40 +1,41 @@
 package io.github.e1s.components.product;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import io.github.e1s.components.discount.DiscountService;
+import io.github.e1s.components.product.errors.IdIsNullException;
+import io.github.e1s.components.product.errors.ProductNotFoundException;
+import io.github.e1s.components.views.ViewsService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
+    private DiscountService discountService;
+    private ViewsService viewsService;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository,
+                              @Qualifier(value = "discountScopeServiceImpl") DiscountService discountService,
+                              ViewsService viewsService) {
         this.productRepository = productRepository;
-    }
-
-    @Override
-    @Transactional
-    public List<ProductDTO> findAllProducts(Pageable pageable) {
-        Page<Product> products = productRepository.findAll(pageable);
-        return products.stream()
-                .map(ProductMapper::productToProductDto)
-                .collect(Collectors.toList());
+        this.discountService = discountService;
+        this.viewsService = viewsService;
     }
 
     @Override
     @Transactional
     public ProductDTO findProductById(Long id) {
         if (id == null) {
-            return null;
+            throw new IdIsNullException();
         }
-        return productRepository.findById(id)
+        ProductDTO productDTO = productRepository.findById(id)
                 .map(ProductMapper::productToProductDto)
                 .orElseThrow(() -> new ProductNotFoundException(id));
+        ProductDTO productWithDiscount = discountService.addDiscount(productDTO);
+        viewsService.increaseViews(productDTO.getId());
+
+        return productWithDiscount;
     }
 
 }

@@ -4,12 +4,28 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet id="20150805125054-2" author="Gliwson">
-
-        <addForeignKeyConstraint baseColumnNames="discount_id"
-                                 baseTableName="product"
-                                 constraintName="fk_product_discount_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="discount"/>
+    <changeSet author="Gliwson" id="1581908445642-7">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="views"
+                                 constraintName="FK519xh017o8vdnbw1mvcy2sfsj" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="Gliwson" id="1581908445642-8">
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="discount_scope"
+                                 constraintName="FKhlofg9bsmuywwcm7gu3i6b6ks" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="discount" validate="true"/>
+    </changeSet>
+    <changeSet author="Gliwson" id="1581908445642-9">
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="discount_type"
+                                 constraintName="FKk8njwx8r9y0wwt5rodxxjkkue" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="discount" validate="true"/>
+    </changeSet>
+    <changeSet author="Gliwson" id="1581908445642-10">
+        <addForeignKeyConstraint baseColumnNames="discount_id" baseTableName="product"
+                                 constraintName="FKps2e0q9jpd0i9kj83je4rsmf1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="discount" validate="true"/>
     </changeSet>
 </databaseChangeLog>

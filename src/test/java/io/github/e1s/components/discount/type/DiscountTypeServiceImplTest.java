@@ -1,5 +1,6 @@
-package io.github.e1s.components.discount;
+package io.github.e1s.components.discount.type;
 
+import io.github.e1s.components.discount.errors.NotFoundDiscountException;
 import io.github.e1s.components.product.ProductDTO;
 import io.github.e1s.components.product.ProductType;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,32 +21,32 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 
 @ExtendWith(MockitoExtension.class)
-class DiscountServiceImplTest {
+class DiscountTypeServiceImplTest {
 
     @InjectMocks
-    private DiscountServiceImpl discountService;
+    private DiscountTypeServiceImpl discountService;
 
     @Mock
-    private DiscountRepository discountRepository;
+    private DiscountTypeRepository discountTypeRepository;
 
     private ProductDTO productDTO;
-    private Discount discountZeroPercent;
-    private Discount discountFivePercent;
-    private Discount discountMinusFivePercent;
+    private DiscountType discountZeroPercent;
+    private DiscountType discountFivePercent;
+    private DiscountType discountMinusFivePercent;
 
     @BeforeEach
     public void init() {
-        discountZeroPercent = new Discount();
+        discountZeroPercent = new DiscountType();
         discountZeroPercent.setId(1L);
         discountZeroPercent.setPercent(0L);
         discountZeroPercent.setType(ProductType.MALE);
 
-        discountFivePercent = new Discount();
+        discountFivePercent = new DiscountType();
         discountFivePercent.setId(1L);
         discountFivePercent.setPercent(5L);
         discountFivePercent.setType(ProductType.MALE);
 
-        discountMinusFivePercent = new Discount();
+        discountMinusFivePercent = new DiscountType();
         discountMinusFivePercent.setId(1L);
         discountMinusFivePercent.setPercent(-5L);
         discountMinusFivePercent.setType(ProductType.MALE);
@@ -64,18 +65,18 @@ class DiscountServiceImplTest {
         //when
         //then
         assertThrows(NotFoundDiscountException.class, () -> discountService.addDiscount(productDTO));
-        then(discountRepository).should().findByType(any());
+        then(discountTypeRepository).should().findByType(any());
     }
 
     @Test
     void shouldBeAbleReturnSameValue() {
         //given
-        given(discountRepository.findByType(discountZeroPercent.getType()))
+        given(discountTypeRepository.findByType(discountZeroPercent.getType()))
                 .willReturn(Optional.ofNullable(discountZeroPercent));
         //when
         ProductDTO result = discountService.addDiscount(this.productDTO);
         //then
-        then(discountRepository).should().findByType(any());
+        then(discountTypeRepository).should().findByType(any());
         assertThat(result.getPrice(), is(new BigDecimal("100")));
 
     }
@@ -83,12 +84,12 @@ class DiscountServiceImplTest {
     @Test
     void shouldBeAbleReturnFivePercentLess() {
         //given
-        given(discountRepository.findByType(discountFivePercent.getType()))
+        given(discountTypeRepository.findByType(discountFivePercent.getType()))
                 .willReturn(Optional.ofNullable(discountFivePercent));
         //when
         ProductDTO result = discountService.addDiscount(this.productDTO);
         //then
-        then(discountRepository).should().findByType(any());
+        then(discountTypeRepository).should().findByType(any());
         assertThat(result.getPrice(), is(new BigDecimal("95.00")));
 
     }
@@ -96,12 +97,12 @@ class DiscountServiceImplTest {
     @Test
     void shouldBeAbleReturnFivePercentMore() {
         //given
-        given(discountRepository.findByType(discountMinusFivePercent.getType()))
+        given(discountTypeRepository.findByType(discountMinusFivePercent.getType()))
                 .willReturn(Optional.ofNullable(discountMinusFivePercent));
         //when
         ProductDTO result = discountService.addDiscount(this.productDTO);
         //then
-        then(discountRepository).should().findByType(any());
+        then(discountTypeRepository).should().findByType(any());
         assertThat(result.getPrice(), is(new BigDecimal("105.00")));
 
     }

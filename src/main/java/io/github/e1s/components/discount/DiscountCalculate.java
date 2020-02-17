@@ -6,9 +6,9 @@ import io.github.e1s.components.product.ProductDTO;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-class DiscountCalculate {
+public class DiscountCalculate {
 
-    static ProductDTO countDiscount(ProductDTO productDTO, Long percent) {
+    public static ProductDTO countDiscount(ProductDTO productDTO, Long percent) {
         BigDecimal price = productDTO.getPrice();
         if (percent == 0) {
             return productDTO;

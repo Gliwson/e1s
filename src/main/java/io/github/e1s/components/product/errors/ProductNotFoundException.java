@@ -1,4 +1,4 @@
-package io.github.e1s.components.product;
+package io.github.e1s.components.product.errors;
 
 public class ProductNotFoundException extends RuntimeException {
     public ProductNotFoundException(Long id) {
