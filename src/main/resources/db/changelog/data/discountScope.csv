@@ -1,0 +1,4 @@
+first_number;range_mark;second_number;scope_id
+0;BETWEEN;499;1
+500;BETWEEN;1999;2
+2000;ABOVE;;3

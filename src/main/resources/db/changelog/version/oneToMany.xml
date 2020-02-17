@@ -4,12 +4,38 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet id="20150805125054-2" author="Gliwson">
+    <changeSet author="Gliwson" id="1581904350993-8">
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="discount_type"
+                                 constraintName="fk_discount_type_discount_id"
+                                 deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="discount"
+                                 validate="true"/>
+    </changeSet>
 
+    <changeSet author="Gliwson" id="1581904350993-9">
+        <addForeignKeyConstraint baseColumnNames="scope_id"
+                                 baseTableName="discount_scope"
+                                 constraintName="fk_discount_scope_discount_id"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="discount"
+                                 validate="true"/>
+    </changeSet>
+
+    <changeSet author="Gliwson" id="1581904350993-10">
         <addForeignKeyConstraint baseColumnNames="discount_id"
                                  baseTableName="product"
                                  constraintName="fk_product_discount_id"
+                                 deferrable="false" initiallyDeferred="false"
+                                 onDelete="RESTRICT" onUpdate="RESTRICT"
                                  referencedColumnNames="id"
-                                 referencedTableName="discount"/>
+                                 referencedTableName="discount"
+                                 validate="true"/>
     </changeSet>
 </databaseChangeLog>

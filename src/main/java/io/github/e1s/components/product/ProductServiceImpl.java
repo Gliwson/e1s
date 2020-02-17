@@ -4,6 +4,7 @@ import io.github.e1s.components.discount.DiscountService;
 import io.github.e1s.components.product.errors.IdIsNullException;
 import io.github.e1s.components.product.errors.ProductNotFoundException;
 import io.github.e1s.components.views.ViewsService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +15,8 @@ public class ProductServiceImpl implements ProductService {
     private DiscountService discountService;
     private ViewsService viewsService;
 
-    public ProductServiceImpl(ProductRepository productRepository, DiscountService discountService,
+    public ProductServiceImpl(ProductRepository productRepository,
+                              @Qualifier(value = "discountScopeServiceImpl") DiscountService discountService,
                               ViewsService viewsService) {
         this.productRepository = productRepository;
         this.discountService = discountService;
@@ -30,7 +32,6 @@ public class ProductServiceImpl implements ProductService {
         ProductDTO productDTO = productRepository.findById(id)
                 .map(ProductMapper::productToProductDto)
                 .orElseThrow(() -> new ProductNotFoundException(id));
-
         ProductDTO productWithDiscount = discountService.addDiscount(productDTO);
         viewsService.increaseViews(productDTO.getId());
 

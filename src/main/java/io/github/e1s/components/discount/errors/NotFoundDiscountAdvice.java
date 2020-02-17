@@ -1,4 +1,4 @@
-package io.github.e1s.components.discount;
+package io.github.e1s.components.discount.errors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

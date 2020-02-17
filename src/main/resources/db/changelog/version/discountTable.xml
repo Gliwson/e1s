@@ -4,19 +4,43 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet author="Gliwson" id="1581112443569-1">
+    <changeSet author="Gliwson" id="1581904350993-1">
         <createTable tableName="discount">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
-            </column>
-            <column name="type" type="VARCHAR(255)">
-                <constraints nullable="false"/>
             </column>
             <column name="percent" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
+    <changeSet author="Gliwson" id="1581904350993-2">
+        <createTable tableName="discount_scope">
+            <column name="first_number" type="DECIMAL(21, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="range_mark" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="second_number" type="DECIMAL(21, 2)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="scope_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Gliwson" id="1581904350993-3">
+        <createTable tableName="discount_type">
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
 
     <changeSet id="20190624005436-1-data" author="Gliwson">
         <loadData
@@ -24,9 +48,21 @@
                 separator=";"
                 tableName="discount">
             <column name="id" type="numeric"/>
-            <column name="type" type="string"/>
             <column name="percent" type="numeric"/>
         </loadData>
     </changeSet>
+
+    <changeSet id="20190624125436-1-data" author="Gliwson">
+        <loadData
+                file="db/changelog/data/discountScope.csv"
+                separator=";"
+                tableName="discount_scope">
+            <column name="first_number" type="numeric"/>
+            <column name="range_mark" type="string"/>
+            <column name="second_number" type="numeric"/>
+            <column name="scope_id" type="numeric"/>
+        </loadData>
+    </changeSet>
+
 
 </databaseChangeLog>
