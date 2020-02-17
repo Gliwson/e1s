@@ -4,6 +4,7 @@ import io.github.e1s.components.discount.Discount;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -15,6 +16,7 @@ public class DiscountScope extends Discount {
     @Column(name = "range_mark", nullable = false)
     private RangeMark rangeMark;
 
+    @NotNull
     @DecimalMin(value = "0")
     @Column(name = "first_number", precision = 21, scale = 2, nullable = false)
     private BigDecimal firsNumber;
