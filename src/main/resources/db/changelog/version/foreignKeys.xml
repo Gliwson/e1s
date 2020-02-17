@@ -6,25 +6,25 @@
 
     <changeSet author="Gliwson" id="1581908445642-7">
         <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="views"
-                                 constraintName="FK519xh017o8vdnbw1mvcy2sfsj" deferrable="false"
+                                 constraintName="fk_views_id_id" deferrable="false"
                                  initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
                                  referencedColumnNames="id" referencedTableName="product" validate="true"/>
     </changeSet>
     <changeSet author="Gliwson" id="1581908445642-8">
         <addForeignKeyConstraint baseColumnNames="id" baseTableName="discount_scope"
-                                 constraintName="FKhlofg9bsmuywwcm7gu3i6b6ks" deferrable="false"
+                                 constraintName="fk_discount_scope_id" deferrable="false"
                                  initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
                                  referencedColumnNames="id" referencedTableName="discount" validate="true"/>
     </changeSet>
     <changeSet author="Gliwson" id="1581908445642-9">
         <addForeignKeyConstraint baseColumnNames="id" baseTableName="discount_type"
-                                 constraintName="FKk8njwx8r9y0wwt5rodxxjkkue" deferrable="false"
+                                 constraintName="fk_discount_type_id" deferrable="false"
                                  initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
                                  referencedColumnNames="id" referencedTableName="discount" validate="true"/>
     </changeSet>
     <changeSet author="Gliwson" id="1581908445642-10">
         <addForeignKeyConstraint baseColumnNames="discount_id" baseTableName="product"
-                                 constraintName="FKps2e0q9jpd0i9kj83je4rsmf1" deferrable="false"
+                                 constraintName="fk_product_id_id" deferrable="false"
                                  initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
                                  referencedColumnNames="id" referencedTableName="discount" validate="true"/>
     </changeSet>

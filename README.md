@@ -12,7 +12,7 @@ W najbliższym czasie rabaty naliczane będą następująco:
 * MALE, FEMALE - 5%
 * KID - 10%
 
-## 2gą część zadania.
+## 2ga część zadania.
 W dotychczasowym rozwiązaniu należy zmienić metodę rabatowania. Od teraz rabat powinien być liczony następująco:
 * jeśli cena produktu jest powyżej 2 000 zł naliczamy rabat 5%
 * produkty w przedziale cenowym 500 zł - 1999 zł rabat 3%
