@@ -6,7 +6,7 @@
     <include file="version/discountTable.xml" relativeToChangelogFile="true"/>
     <include file="version/productTable.xml" relativeToChangelogFile="true"/>
     <include file="version/viewsTable.xml" relativeToChangelogFile="true"/>
-    <include file="version/oneToMany.xml" relativeToChangelogFile="true"/>
+    <include file="version/foreignKeys.xml" relativeToChangelogFile="true"/>
     <include file="version/viewsToProduct.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
 
