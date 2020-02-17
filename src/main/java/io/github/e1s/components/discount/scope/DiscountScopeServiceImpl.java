@@ -23,15 +23,21 @@ public class DiscountScopeServiceImpl implements DiscountService {
     @Transactional
     public ProductDTO addDiscount(ProductDTO productDTO) {
         List<DiscountScope> discountScopeList = discountTypeRepository.findAll();
-
-        discountScopeList.stream().filter(d -> d.getSecondNumber() == null)
-                .forEach(d -> d.setSecondNumber(BigDecimal.valueOf(Double.MAX_VALUE)));
-
-        Optional<DiscountScope> scope = discountScopeList.stream()
-                .filter(e -> (e.getFirsNumber().compareTo(productDTO.getPrice()) <= 0
-                        && e.getSecondNumber().compareTo(productDTO.getPrice()) > 0)).findFirst();
+        ifSecondNumberIsNullSetMaxValue(discountScopeList);
+        Optional<DiscountScope> scope = filterToSearchRange(productDTO, discountScopeList);
 
         return scope.map(discountScope -> DiscountCalculate.countDiscount(productDTO, discountScope.getPercent()))
                 .orElse(productDTO);
+    }
+
+    private Optional<DiscountScope> filterToSearchRange(ProductDTO productDTO, List<DiscountScope> discountScopeList) {
+        return discountScopeList.stream()
+                .filter(e -> (e.getFirsNumber().compareTo(productDTO.getPrice()) <= 0
+                        && e.getSecondNumber().compareTo(productDTO.getPrice()) > 0)).findFirst();
+    }
+
+    private void ifSecondNumberIsNullSetMaxValue(List<DiscountScope> discountScopeList) {
+        discountScopeList.stream().filter(d -> d.getSecondNumber() == null)
+                .forEach(d -> d.setSecondNumber(BigDecimal.valueOf(Double.MAX_VALUE)));
     }
 }
