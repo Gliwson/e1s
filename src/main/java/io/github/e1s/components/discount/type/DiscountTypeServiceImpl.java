@@ -20,7 +20,6 @@ public class DiscountTypeServiceImpl implements DiscountService {
     @Override
     @Transactional
     public ProductDTO addDiscount(ProductDTO productDTO) {
-        System.out.println("wykonało się type");
         Long percent = discountTypeRepository.findByType(productDTO.getProductType())
                 .map(Discount::getPercent)
                 .orElseThrow(() -> new NotFoundDiscountException(productDTO.getProductType().toString()));

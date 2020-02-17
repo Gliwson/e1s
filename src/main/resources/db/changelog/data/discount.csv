@@ -1,5 +1,7 @@
-id;percent
-1;0
-2;5
-3;"3
-"
+id;percent;DIS
+1;0;SCOPE
+2;5;SCOPE
+3;3;SCOPE
+4;0;TYPE
+5;5;TYPE
+6;10;TYPE

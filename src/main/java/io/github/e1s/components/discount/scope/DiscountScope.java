@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "discount_scope")
-@PrimaryKeyJoinColumn(name = "scope_id")
+@DiscriminatorValue("SCOPE")
 public class DiscountScope extends Discount {
 
     @Enumerated(EnumType.STRING)

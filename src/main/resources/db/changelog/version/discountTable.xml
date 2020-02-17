@@ -4,8 +4,11 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet author="Gliwson" id="1581904350993-1">
+    <changeSet author="Gliwson" id="1581908445642-1">
         <createTable tableName="discount">
+            <column name="DIS" type="VARCHAR(31)">
+                <constraints nullable="false"/>
+            </column>
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
@@ -14,7 +17,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gliwson" id="1581904350993-2">
+    <changeSet author="Gliwson" id="1581908445642-2">
         <createTable tableName="discount_scope">
             <column name="first_number" type="DECIMAL(21, 2)">
                 <constraints nullable="false"/>
@@ -22,20 +25,18 @@
             <column name="range_mark" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="second_number" type="DECIMAL(21, 2)">
-                <constraints nullable="true"/>
-            </column>
-            <column name="scope_id" type="BIGINT">
+            <column name="second_number" type="DECIMAL(21, 2)"/>
+            <column name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Gliwson" id="1581904350993-3">
+    <changeSet author="Gliwson" id="1581908445642-3">
         <createTable tableName="discount_type">
             <column name="type" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="type_id" type="BIGINT">
+            <column name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
         </createTable>
@@ -49,6 +50,7 @@
                 tableName="discount">
             <column name="id" type="numeric"/>
             <column name="percent" type="numeric"/>
+            <column name="DIS" type="string"/>
         </loadData>
     </changeSet>
 
@@ -60,7 +62,18 @@
             <column name="first_number" type="numeric"/>
             <column name="range_mark" type="string"/>
             <column name="second_number" type="numeric"/>
-            <column name="scope_id" type="numeric"/>
+            <column name="id" type="numeric"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="20190624005226-1-data" author="Gliwson">
+        <loadData
+                file="db/changelog/data/discountType.csv"
+                separator=";"
+                tableName="discount_type">
+            <column name="type" type="string"/>
+            <column name="id" type="numeric"/>
+
         </loadData>
     </changeSet>
 

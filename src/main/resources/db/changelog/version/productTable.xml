@@ -4,7 +4,7 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet author="Gliwson" id="1581041287256-2">
+    <changeSet author="Gliwson" id="1581908445642-4">
         <createTable tableName="product">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -19,9 +19,13 @@
             <column name="product_type" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-<!--            <column name="views_id" type="BIGINT"/>-->
             <column name="discount_id" type="BIGINT"/>
         </createTable>
+    </changeSet>
+    <changeSet author="Gliwson" id="1581908445642-6">
+        <createIndex indexName="FKps2e0q9jpd0i9kj83je4rsmf1" tableName="product">
+            <column name="discount_id"/>
+        </createIndex>
     </changeSet>
 
     <changeSet id="20190624005436-2-data" author="Gliwson">

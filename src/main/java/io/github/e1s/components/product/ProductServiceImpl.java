@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductService {
     private ViewsService viewsService;
 
     public ProductServiceImpl(ProductRepository productRepository,
-                              @Qualifier(value = "discountScopeServiceImpl") DiscountService discountService,
+                              @Qualifier(value = "discountTypeServiceImpl") DiscountService discountService,
                               ViewsService viewsService) {
         this.productRepository = productRepository;
         this.discountService = discountService;

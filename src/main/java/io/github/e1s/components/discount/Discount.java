@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-//@DiscriminatorColumn(name="discount_type_id")
+@DiscriminatorColumn(name = "DIS")
 public class Discount {
 
     @Id

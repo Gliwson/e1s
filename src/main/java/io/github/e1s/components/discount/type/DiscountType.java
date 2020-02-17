@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "discount_type")
-@PrimaryKeyJoinColumn(name = "type_id")
+@DiscriminatorValue("TYPE")
 public class DiscountType extends Discount {
 
     @Enumerated(EnumType.STRING)
