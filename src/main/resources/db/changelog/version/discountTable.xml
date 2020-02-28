@@ -19,13 +19,13 @@
     </changeSet>
     <changeSet author="Gliwson" id="1581908445642-2">
         <createTable tableName="discount_scope">
-            <column name="first_number" type="DECIMAL(21, 2)">
+            <column name="first_number" type="DECIMAL(311, 2)">
                 <constraints nullable="false"/>
             </column>
             <column name="range_mark" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="second_number" type="DECIMAL(21, 2)"/>
+            <column name="second_number" type="DECIMAL(311, 2)"/>
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>

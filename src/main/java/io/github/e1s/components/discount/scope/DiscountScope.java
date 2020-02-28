@@ -18,11 +18,11 @@ public class DiscountScope extends Discount {
 
     @NotNull
     @DecimalMin(value = "0")
-    @Column(name = "first_number", precision = 21, scale = 2, nullable = false)
+    @Column(name = "first_number", precision = 311, scale = 2, nullable = false)
     private BigDecimal firsNumber;
 
     @DecimalMin(value = "0")
-    @Column(name = "second_number", precision = 21, scale = 2)
+    @Column(name = "second_number", precision = 311, scale = 2)
     private BigDecimal secondNumber;
 
     public RangeMark getRangeMark() {

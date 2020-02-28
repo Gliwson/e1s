@@ -26,6 +26,9 @@ public class DiscountScopeServiceImpl implements DiscountService {
         ifSecondNumberIsNullSetMaxValue(discountScopeList);
         Optional<DiscountScope> scope = filterToSearchRange(productDTO, discountScopeList);
 
+        List<Long> findwszystko = discountTypeRepository.findwszystko(productDTO.getPrice());
+        System.out.println(findwszystko.get(0));
+
         return scope.map(discountScope -> DiscountCalculate.countDiscount(productDTO, discountScope.getPercent()))
                 .orElse(productDTO);
     }
